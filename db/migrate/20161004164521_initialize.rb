@@ -3,7 +3,8 @@ class Initialize < ActiveRecord::Migration[5.0]
     create_table :feeds do |t|
       t.string :url
       t.string :title
-      t.timestamp
+      t.datetime :entry_created, null: false
+      t.timestamps
     end
   end
 end

@@ -13,8 +13,11 @@
 ActiveRecord::Schema.define(version: 20161004164521) do
 
   create_table "feeds", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string "url"
-    t.string "title"
+    t.string   "url"
+    t.string   "title"
+    t.datetime "entry_created", null: false
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
   end
 
 end

@@ -11,6 +11,7 @@ class Feed < ActiveRecord::Base
         feed = Feed.new(
           title: feed.title,
           url: feed.link,
+          entry_created: feed.pubDate
         )
         feed.save
       end
