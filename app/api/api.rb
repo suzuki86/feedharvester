@@ -4,8 +4,15 @@ class API < Grape::API
   prefix '/api'
 
   resource :feeds do
+
+    params do
+      optional :page, type: Integer, desc: "Page number"
+    end
+
     get "/" do
-      Feed.all
+      Feed
+        .order(entry_created: :desc)
+        .page(params[:page])
     end
   end
 end

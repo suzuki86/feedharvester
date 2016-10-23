@@ -1,6 +1,8 @@
 require 'rss'
 
 class Feed < ActiveRecord::Base
+  paginates_per 20
+
   def self.fetch_feeds(url)
     RSS::Parser.parse(url).items
   end
