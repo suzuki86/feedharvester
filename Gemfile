@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
 
+gem 'grape'
 gem 'activerecord-import'
 gem 'mysql2'
 
