@@ -13,14 +13,13 @@
 ActiveRecord::Schema.define(version: 20161105134200) do
 
   create_table "api_keys", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string   "access_token"
-    t.datetime "expires_at"
     t.integer  "user_id"
+    t.string   "access_token"
     t.boolean  "active"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
     t.index ["access_token"], name: "index_api_keys_on_access_token", unique: true, using: :btree
-    t.index ["user_id"], name: "index_api_keys_on_user_id", unique: true, using: :btree
+    t.index ["user_id"], name: "index_api_keys_on_user_id", using: :btree
   end
 
   create_table "entrypoints", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
