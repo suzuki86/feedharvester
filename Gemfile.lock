@@ -45,6 +45,9 @@ GEM
       descendants_tracker (~> 0.0.4)
       ice_nine (~> 0.11.0)
       thread_safe (~> 0.3, >= 0.3.1)
+    bcrypt (3.1.11)
+    bcrypt-ruby (3.1.5)
+      bcrypt (>= 3.1.3)
     builder (3.2.2)
     byebug (9.0.6)
     coercible (1.0.0)
@@ -201,6 +204,7 @@ PLATFORMS
 
 DEPENDENCIES
   activerecord-import
+  bcrypt-ruby
   byebug
   coffee-rails (~> 4.2)
   grape
