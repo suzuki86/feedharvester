@@ -3,6 +3,20 @@ class API < Grape::API
   format :json
   prefix '/api'
 
+  resource :entrypoints do
+    params do
+      requires :name, type: String, desc: "Entrypoint name"
+      requires :entrypoint, type: String, desc: "Entrypoint url"
+    end
+    post do
+      authenticate!
+      Entrypoint.create(
+        name: params[:name],
+        entrypoint: params[:entrypoint]
+      )
+    end
+  end
+
   resource :feeds do
     params do
       optional :page, type: Integer, desc: "Page number"
@@ -53,7 +67,11 @@ class API < Grape::API
     end
 
     def bearer_token
-      request.headers["Authorization"].match(/Bearer (.+)/)[1]
+      authorization_header = request.headers["Authorization"]
+      if !authorization_header
+        return nil
+      end
+      authorization_header.match(/Bearer (.+)/)[1]
     end
   end
 end
