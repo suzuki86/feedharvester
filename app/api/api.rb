@@ -5,7 +5,6 @@ class API < Grape::API
 
   resource :feeds do
     params do
-      requires :token, type: String, desc: "Access token."
       optional :page, type: Integer, desc: "Page number"
     end
     get "/" do
@@ -45,12 +44,16 @@ class API < Grape::API
     end
 
     def current_user
-      token = ApiKey.where(access_token: params[:token]).first
+      token = ApiKey.where(access_token: bearer_token).first
       if token
         @current_user = User.find(token.user_id)
       else
         false
       end
+    end
+
+    def bearer_token
+      request.headers["Authorization"].match(/Bearer (.+)/)[1]
     end
   end
 end
