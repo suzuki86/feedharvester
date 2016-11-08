@@ -5,7 +5,6 @@ class API < Grape::API
 
   resource :feeds do
     params do
-      # requires :token, type: String, desc: "Access token."
       optional :page, type: Integer, desc: "Page number"
     end
     get "/" do
