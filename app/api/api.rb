@@ -7,7 +7,7 @@ class API < Grape::API
     params do
       optional :page, type: Integer, desc: "Page number"
     end
-    get "/" do
+    get do
       authenticate!
       Feed
         .order(entry_created: :desc)
