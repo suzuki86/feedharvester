@@ -25,6 +25,32 @@ class API < Grape::API
         entrypoint: params[:entrypoint]
       )
     end
+
+    params do
+      optional :name, type: String, desc: "Entrypoint name"
+      optional :entrypoint, type: String, desc: "Entrypoint url"
+    end
+    put "/:id" do
+      authenticate!
+      entrypoint = Entrypoint.find_by(id: params[:id])
+      if entrypoint
+        entrypoint.update(
+          name: params[:name],
+          entrypoint: params[:entrypoint]
+        )
+      end
+    end
+
+    params do
+      requires :id, type: Integer, desc: "Entrypoint id"
+    end
+    delete "/:id" do
+      authenticate!
+      entrypoint = Entrypoint.find_by(id: params[:id])
+      if entrypoint
+        entrypoint.destroy
+      end
+    end
   end
 
   resource :feeds do
