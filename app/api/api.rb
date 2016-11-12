@@ -5,6 +5,16 @@ class API < Grape::API
 
   resource :entrypoints do
     params do
+      optional :page, type: Integer, desc: "Page number"
+    end
+    get do
+      authenticate!
+      Entrypoint
+        .order(created_at: :desc)
+        .page(params[:page])
+    end
+
+    params do
       requires :name, type: String, desc: "Entrypoint name"
       requires :entrypoint, type: String, desc: "Entrypoint url"
     end
