@@ -3,6 +3,7 @@ class Initialize < ActiveRecord::Migration[5.0]
     create_table :endpoints do |t|
       t.string :name
       t.string :endpoint
+      t.datetime :last_fetched
       t.timestamps
     end
 
