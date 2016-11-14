@@ -7,3 +7,6 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 User.create(email: "example@example.com", password: "pswd1234")
+
+ApiKey.skip_callback(:create, :before, :generate_access_token)
+ApiKey.create(user_id: 1, access_token: "398e5ff238efe5705dbca92b71a25c00")
