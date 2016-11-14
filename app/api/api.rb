@@ -3,52 +3,52 @@ class API < Grape::API
   format :json
   prefix '/api'
 
-  resource :entrypoints do
+  resource :endpoints do
     params do
       optional :page, type: Integer, desc: "Page number"
     end
     get do
       authenticate!
-      Entrypoint
+      Endpoint
         .order(created_at: :desc)
         .page(params[:page])
     end
 
     params do
-      requires :name, type: String, desc: "Entrypoint name"
-      requires :entrypoint, type: String, desc: "Entrypoint url"
+      requires :name, type: String, desc: "Endpoint name"
+      requires :endpoint, type: String, desc: "Endpoint url"
     end
     post do
       authenticate!
-      Entrypoint.create(
+      Endpoint.create(
         name: params[:name],
-        entrypoint: params[:entrypoint]
+        endpoint: params[:endpoint]
       )
     end
 
     params do
-      optional :name, type: String, desc: "Entrypoint name"
-      optional :entrypoint, type: String, desc: "Entrypoint url"
+      optional :name, type: String, desc: "Endpoint name"
+      optional :endpoint, type: String, desc: "Endpoint url"
     end
     put "/:id" do
       authenticate!
-      entrypoint = Entrypoint.find_by(id: params[:id])
-      if entrypoint
-        entrypoint.update(
+      endpoint = Endpoint.find_by(id: params[:id])
+      if endpoint
+        endpoint.update(
           name: params[:name],
-          entrypoint: params[:entrypoint]
+          endpoint: params[:endpoint]
         )
       end
     end
 
     params do
-      requires :id, type: Integer, desc: "Entrypoint id"
+      requires :id, type: Integer, desc: "Endpoint id"
     end
     delete "/:id" do
       authenticate!
-      entrypoint = Entrypoint.find_by(id: params[:id])
-      if entrypoint
-        entrypoint.destroy
+      endpoint = Endpoint.find_by(id: params[:id])
+      if endpoint
+        endpoint.destroy
       end
     end
   end

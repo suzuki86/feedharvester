@@ -1,13 +1,13 @@
 class Initialize < ActiveRecord::Migration[5.0]
   def change
-    create_table :entrypoints do |t|
+    create_table :endpoints do |t|
       t.string :name
-      t.string :entrypoint
+      t.string :endpoint
       t.timestamps
     end
 
     create_table :feeds do |t|
-      t.belongs_to :entrypoint
+      t.belongs_to :endpoint
       t.string :url
       t.string :title
       t.datetime :entry_created, null: false
