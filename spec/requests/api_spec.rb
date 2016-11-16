@@ -3,7 +3,7 @@ require 'rails_helper'
 
 describe API do
   describe "GET /api/v1/feeds" do
-    it "returns 401" do
+    it "returns 401 with invalid token" do
       headers = {
         "Authorization" => "Bearer 1234"
       }
@@ -11,7 +11,7 @@ describe API do
       expect(response.status).to eq(401)
     end
 
-    it "returns 200" do
+    it "returns 200 with valid token" do
       FactoryGirl.create(:user_admin)
       FactoryGirl.create(:apikey_admin)
       headers = {
