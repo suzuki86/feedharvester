@@ -1,0 +1,25 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<rss xmlns:blogChannel="http://backend.userland.com/blogChannelModule" version="2.0">
+<channel>
+<title>Website Title</title>
+<link>http://example.com/</link>
+<description>Website Description</description>
+<language>ja</language>
+<pubDate>Wed, 23 Nov 2016 22:00:00 +0900</pubDate>
+<item>
+<title>Entry Title 1</title>
+<link>http://example.com/example1</link>
+<pubDate>Wed, 23 Nov 2016 22:01:01 +0900</pubDate>
+<enclosure length="100" url="http://example.com/photo.gif" type="image/gif">
+</enclosure>
+<guid isPermaLink="false">example/dummy/1</guid>
+</item>
+<item>
+<title>Entry Title 2</title>
+<link>http://example.com/example2</link>
+<pubDate>Wed, 23 Nov 2016 20:00:00 +0900</pubDate>
+<guid isPermaLink="false">example/dummy/2</guid>
+</item>
+</channel>
+</rss>
+
