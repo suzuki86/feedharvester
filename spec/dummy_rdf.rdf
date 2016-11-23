@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rdf:RDF
+ xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+ xmlns="http://purl.org/rss/1.0/"
+ xmlns:content="http://purl.org/rss/1.0/modules/content/"
+ xmlns:taxo="http://purl.org/rss/1.0/modules/taxonomy/"
+ xmlns:dc="http://purl.org/dc/elements/1.1/"
+ xmlns:syn="http://purl.org/rss/1.0/modules/syndication/"
+ xmlns:admin="http://webns.net/mvcb/"
+ xmlns:atom="http://www.w3.org/2005/Atom"
+>
+<channel rdf:about="http://example.com">
+<title>サイトタイトル1</title>
+<link>http://example.com/example1/</link>
+<description>サイト説明文1
+</description>
+<dc:language>ja</dc:language>
+<admin:generatorAgent rdf:resource="http://blog.livedoor.com/?v=2.0" />
+<atom:link rel="hub" href="http://pubsubhubbub.appspot.com" />
+<items>
+ <rdf:Seq>
+  <rdf:li rdf:resource="http://example.com/example1" />
+  <rdf:li rdf:resource="http://example.com/example2" />
+ </rdf:Seq>
+</items>
+</channel>
+<item rdf:about="http://example.com/example1">
+<title>記事タイトル1</title>
+<link>http://example.com/example1</link>
+<description>記事説明文1</description>
+<dc:creator>creattor1</dc:creator>
+<dc:date>2016-01-01T10:00:00+09:00</dc:date>
+<dc:subject>subject1</dc:subject>
+<content:encoded><![CDATA[
+  content1
+]]>
+</content:encoded>
+</item>
+<item rdf:about="http://example.com/example2">
+<title>記事タイトル2</title>
+<link>http://example.com/example2</link>
+<description>記事説明文2</description>
+<dc:creator>creattor2</dc:creator>
+<dc:date>2016-01-02T10:00:00+09:00</dc:date>
+<dc:subject>subject2</dc:subject>
+<content:encoded><![CDATA[
+  content2
+]]>
+</content:encoded>
+</item>
+</rdf:RDF>
+
