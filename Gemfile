@@ -5,6 +5,7 @@ gem 'grape'
 gem 'activerecord-import'
 gem 'mysql2'
 gem 'kaminari'
+gem 'unicorn'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.0.0', '>= 5.0.0.1'
