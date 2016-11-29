@@ -27,4 +27,18 @@ describe Feed do
     Feed.save_rss(1, feeds)
     expect(Feed.first.title).to eq "Entry Title 1"
   end
+
+  it "save rss feeds correctly" do
+    allow(Feed).to receive(:fetch_feeds).and_return(dummy_rss)
+    feeds = Feed.fetch_feeds("http://example.com/rss")
+    Feed.save_feeds(1, feeds)
+    expect(Feed.first.title).to eq "Entry Title 1"
+  end
+
+  it "save rdf feeds correctly" do
+    allow(Feed).to receive(:fetch_feeds).and_return(dummy_rdf)
+    feeds = Feed.fetch_feeds("http://example.com/rdf")
+    Feed.save_feeds(1, feeds)
+    expect(Feed.first.title).to eq "記事タイトル1"
+  end
 end

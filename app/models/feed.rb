@@ -10,10 +10,22 @@ class Feed < ActiveRecord::Base
   end
 
   def self.save_feeds(endpoint_id, feeds)
-    if feed.class == RSS::RDF
-      save_rdf(endpoint_id, feeds)
-    elsif feed.class == RSS::Rss
-      save_rss(endpoint_id, feeds)
+    if feeds.class == RSS::RDF
+      entry_created_method_name = "dc_date"
+    elsif feeds.class == RSS::Rss
+      entry_created_method_name = "pubDate"
+    end
+
+    feeds.items.each do |feed|
+      if !Feed.find_by(url: feed.link)
+        feed = Feed.new(
+          endpoint_id: endpoint_id,
+          title: feed.title,
+          url: feed.link,
+          entry_created: feed.send(entry_created_method_name)
+        )
+        feed.save
+      end
     end
   end
 
